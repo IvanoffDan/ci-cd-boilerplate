@@ -3,10 +3,22 @@ jobs:
   build:
     working_directory: ~/ci-cd-boilerplate
     docker:
-      - image: node:8.1
+      - image: circleci/node:8.1
     steps:
       - checkout
-            - run:
+      - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm-wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test
+          command: npm test
       - run: node server
