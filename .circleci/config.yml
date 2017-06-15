@@ -6,9 +6,6 @@ jobs:
       - image: circleci/node:8
     steps:
       - checkout
-      - run:
-          name: where-am-i
-          command: pwd
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       # - run:
@@ -16,9 +13,9 @@ jobs:
       #     command: sh -e /etc/init.d/xvfb start
       - run:
           name: install-coveralls-rimraf-cross-env-jest
-          command: sudo npm install -g coveralls rimraf cross-env jest
+          command: sudo npm install -g coveralls rimraf cross-env jest-cli
       - run:
-          name: install-npm-wee
+          name: install-npm
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
