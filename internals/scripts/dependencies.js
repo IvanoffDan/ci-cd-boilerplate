@@ -10,7 +10,7 @@ const fs = require('fs');
 const exists = fs.existsSync;
 const writeFile = fs.writeFileSync;
 
-const defaults = require('../../node_modules/lodash/defaultsDeep');
+const defaults = require('lodash/defaultsDeep');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const config = require('../config');
 const dllConfig = defaults(pkg.dllPlugin, config.dllPlugin.defaults);
