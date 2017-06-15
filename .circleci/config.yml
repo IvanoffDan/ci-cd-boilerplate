@@ -12,8 +12,11 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: set-production-env-variable
+          command: NODE_ENV=production
+      - run:
           name: install-npm-wee
-          command: cross-env NODE_ENV=production npm install
+          command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
