@@ -20,5 +20,5 @@ jobs:
             - ./node_modules
       - run:
           name: test
-          command: npm run coveralls
+          command: npm run test
       - run: node server
