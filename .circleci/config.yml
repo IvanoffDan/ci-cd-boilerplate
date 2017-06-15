@@ -16,7 +16,7 @@ jobs:
       #     command: sudo npm install -g coveralls rimraf cross-env jest-cli
       - run:
           name: install-npm
-          command: npm install
+          command: sudo npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
