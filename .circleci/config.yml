@@ -1,0 +1,12 @@
+version: 2
+jobs: 
+  build:
+    working_directory: ~/ci-cd-boilerplate
+    docker:
+      - image: node:8.1
+    steps:
+      - checkout
+            - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      - run: node server
