@@ -12,8 +12,11 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: install-rimraf-eslint
-          command: sudo npm install -g rimraf eslint eslint-plugin-redux-saga
+          name: enable xvfb
+          command: sudo sh -e /etc/init.d/xvfb start
+      - run:
+          name: install-coveralls
+          command: sudo npm install -g coveralls
       - run:
           name: install-npm-wee
           command: npm install
@@ -23,5 +26,5 @@ jobs:
             - ./node_modules
       - run:
           name: test
-          command: npm run test
+          command: npm run coveralls
       - run: node server
