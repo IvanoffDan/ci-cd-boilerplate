@@ -12,8 +12,8 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: install-rimraf
-          command: sudo npm install -g rimraf
+          name: install-rimraf-eslint
+          command: sudo npm install -g rimraf eslint
       - run:
           name: install-npm-wee
           command: npm install
