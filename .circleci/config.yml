@@ -1,33 +1,14 @@
 version: 2
 jobs: 
   build:
-    working_directory: ~/ci-cd-boilerplate
     docker:
-      - image: circleci/node:8
+      - image: ivanoffdan/ci-cd-boilerplate:latest
+    working_directory: ~/ci-cd-boilerplate
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      # - run:
-      #     name: enable xvfb
-      #     command: sh -e /etc/init.d/xvfb start
-      - run:
-          name: install-coveralls-rimraf-cross-env-jest
-          command: sudo npm install -g cross-env
-      - run:
-          name: install-npm
-          command: sudo npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
       - run:
           name: test
-          command: npm run test
+          command: docker run ivanoffdan/ci-cd-boilerplate npm test
       - run:
           name: test
-          command: npm run build
-      - run:
-          name: test
-          command: npm run coveralls
-      - run: node server
+          command: docker run ivanoffdan/ci-cd-boilerplate npm build
