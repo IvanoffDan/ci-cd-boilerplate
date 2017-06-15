@@ -3,6 +3,8 @@ if (process.env.NODE_ENV === 'production') {
   process.exit(0);
 }
 
+console.log(process.env.NODE_ENV);
+
 require('shelljs/global');
 
 const path = require('path');
