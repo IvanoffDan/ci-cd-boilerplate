@@ -12,9 +12,6 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: set-production-env-variable
-          command: export NODE_ENV=production
-      - run:
           name: install-npm-wee
           command: npm install
       - save_cache:
@@ -23,5 +20,5 @@ jobs:
             - ./node_modules
       - run:
           name: test
-          command: npm test
+          command: npm run coveralls
       - run: node server
