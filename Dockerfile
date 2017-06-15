@@ -7,11 +7,12 @@ WORKDIR /app
 ENV NODE_ENV production
 COPY package.json .
 RUN npm install
+RUN npm install -g core-js
 COPY . .
 
 EXPOSE 3000
 
 VOLUME /reactapp
 
-CMD npm start :prod
+CMD npm start :prodx
 
