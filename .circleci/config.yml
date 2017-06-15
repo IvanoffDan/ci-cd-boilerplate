@@ -13,7 +13,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: enable xvfb
-          command: sudo sh -e /etc/init.d/xvfb start
+          command: sh -e /etc/init.d/xvfb start
       - run:
           name: install-coveralls
           command: sudo npm install -g coveralls
