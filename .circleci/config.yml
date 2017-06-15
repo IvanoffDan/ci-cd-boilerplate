@@ -12,6 +12,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: install-rimraf
+          command: npm install -g rimraf
+      - run:
           name: install-npm-wee
           command: npm install
       - save_cache:
